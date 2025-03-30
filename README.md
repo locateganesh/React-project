@@ -1,5 +1,5 @@
 # React-project
-It contains multiple react project (learning project)
+It contains multiple React projects (learning projects)
 
 ### 01 - React Essential
 A simple recat app for basic understaing
