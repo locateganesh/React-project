@@ -4,7 +4,7 @@ It contains multiple React Projects (learning projects)
 ### 01 - React Essential
 A simple recat app for basic understaing
 
-Code
+[Code](https://github.com/locateganesh/React-project/tree/01-React-Essentials)
 
 ### 02 - React Investment App
 State management using `useState` 
