@@ -24,7 +24,7 @@ A game using React.
 Code
 
 
-### 05 - CountDown App 
+### 05 - Countdown App 
 Using React Refs and Portals
 
 Code
@@ -34,5 +34,10 @@ Using React Context API and `useRedeucer`
 
 Code
 
+### 08 - Location Picker 
+Using React `useffect` to manage side effect
 
-> Learning along with [Max schwarzmueller](https://github.com/academind).
+[Code](https://github.com/locateganesh/React-project/tree/08-location-picker-react-useEffect)
+
+
+> Credit - [Max schwarzmueller](https://github.com/academind).
