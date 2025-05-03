@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, memo, useCallback, useMemo } from 'react';
 
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
 import PlusIcon from '../UI/Icons/PlusIcon.jsx';
 import CounterOutput from './CounterOutput.jsx';
 import { log } from '../../log.js';
+import CounterHistory from './CounterHistory';
 
 function isPrime(number) {
   log(
@@ -27,19 +28,36 @@ function isPrime(number) {
   return true;
 }
 
-export default function Counter({ initialCount }) {
+const Counter = ({ initialCount }) => {
   log('<Counter /> rendered', 1);
-  const initialCountIsPrime = isPrime(initialCount);
+  const initialCountIsPrime = useMemo(() => isPrime(initialCount), [initialCount]);
+  // useMemo executes only when initialCount value is changed. Othwise not.
+ 
+  const [counterChanges, setCounterChanges] = useState([{value: initialCount, id: 1}]);
 
-  const [counter, setCounter] = useState(initialCount);
+  const currentCounter = counterChanges.reduce(
+    (prevCounter, counterChange) => prevCounter + counterChange.value,
+    0
+  );
 
-  function handleDecrement() {
-    setCounter((prevCounter) => prevCounter - 1);
-  }
+  const handleDecrement = useCallback(() => {
+    // setCounter((prevCounter) => prevCounter - 1);
+    setCounterChanges((prevCounter) => {
+      const lastCounterId = prevCounter[0];
+      const newCounterId = lastCounterId ? lastCounterId.id + 1 : 1;
+      return [{value: -1, id: newCounterId }, ...prevCounter]
+    });
+  }, []);
 
-  function handleIncrement() {
-    setCounter((prevCounter) => prevCounter + 1);
-  }
+  const handleIncrement = useCallback(() => {
+    // setCounter((prevCounter) => prevCounter + 1);
+    // setCounterChanges((prevCounter) => [{value: 1, id: prevCounter.id + 1}, ...prevCounter]);
+    setCounterChanges((prevCounter) => {
+      const lastCounterId = prevCounter[0];
+      const newCounterId = lastCounterId ? lastCounterId.id + 1 : 1;
+      return [{value: 1, id: newCounterId }, ...prevCounter]
+    });
+  }, []);
 
   return (
     <section className="counter">
@@ -51,11 +69,17 @@ export default function Counter({ initialCount }) {
         <IconButton icon={MinusIcon} onClick={handleDecrement}>
           Decrement
         </IconButton>
-        <CounterOutput value={counter} />
+        <CounterOutput value={currentCounter} />
         <IconButton icon={PlusIcon} onClick={handleIncrement}>
           Increment
         </IconButton>
       </p>
+      <CounterHistory history={counterChanges} /> 
     </section>
   );
 }
+
+// export default Counter;
+export default memo(Counter);
+// Memo checks if its props values are changing then only re-render this component.
+// Memmo only cares about extrenal changes not internal. That means inside Counter component useState or side-effect causes it to re-render, Memo will not help here.
