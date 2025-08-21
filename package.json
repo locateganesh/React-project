@@ -1,0 +1,23 @@
+{
+  "name": "redux-demo",
+  "version": "1.0.0",
+  "description": "It contains multiple React Projects (learning projects)",
+  "main": "redux-demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node redux-demo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locateganesh/React-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/locateganesh/React-project/issues"
+  },
+  "homepage": "https://github.com/locateganesh/React-project#readme",
+  "dependencies": {
+    "redux": "^5.0.1"
+  }
+}
