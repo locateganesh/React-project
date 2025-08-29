@@ -1,7 +1,7 @@
 import { cartActions } from './cart-slice';
 import { uiActions } from './ui-slice';
 
-const API_URL = "https://react-redux-async-755dc-default-rtdb.firebaseio.com/cart.json";
+const API_URL = "Get is form firebase - react-redux-async";
 
 export const fetchCartData = () => {
     return async (dispatch) => {
