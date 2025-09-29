@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { getAll, get, add, replace, remove } = require('../data/event');
+const { checkAuth } = require('../util/auth');
 const {
   isValidText,
   isValidDate,
@@ -10,11 +11,10 @@ const {
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
+  console.log(req.token);
   try {
     const events = await getAll();
-    setTimeout(()=>{
-      res.json({ events: events });
-    }, 1500);
+    res.json({ events: events });
   } catch (error) {
     next(error);
   }
@@ -23,15 +23,16 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const event = await get(req.params.id);
-    setTimeout(()=>{
-      res.json({ event: event });
-    }, 1500);
+    res.json({ event: event });
   } catch (error) {
     next(error);
   }
 });
 
+router.use(checkAuth);
+
 router.post('/', async (req, res, next) => {
+  console.log(req.token);
   const data = req.body;
 
   let errors = {};
@@ -61,9 +62,7 @@ router.post('/', async (req, res, next) => {
 
   try {
     await add(data);
-    setTimeout(() => {
-      res.status(201).json({ message: 'Event saved.', event: data });
-    }, 1500);
+    res.status(201).json({ message: 'Event saved.', event: data });
   } catch (error) {
     next(error);
   }
@@ -99,9 +98,7 @@ router.patch('/:id', async (req, res, next) => {
 
   try {
     await replace(req.params.id, data);
-    setTimeout(() => {
-      res.json({ message: 'Event updated.', event: data });
-    }, 1500);
+    res.json({ message: 'Event updated.', event: data });
   } catch (error) {
     next(error);
   }
@@ -110,9 +107,7 @@ router.patch('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
     await remove(req.params.id);
-    setTimeout(() => {
-      res.json({ message: 'Event deleted.' });
-    }, 1500);
+    res.json({ message: 'Event deleted.' });
   } catch (error) {
     next(error);
   }

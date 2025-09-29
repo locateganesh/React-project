@@ -1,23 +1,24 @@
-import { useFetcher } from 'react-router-dom';
-import classes from './NewsletterSignup.module.css';
 import { useEffect } from 'react';
+import { useFetcher } from 'react-router-dom';
+
+import classes from './NewsletterSignup.module.css';
 
 function NewsletterSignup() {
-  // Form and Form maintains its own state internally. and it will not cause the component to re-render.
-  // fetcher.Form will trigger an action but doens't cause route transition.
-  // Useful for newsletter signup form or comment form where you don't want to navigate away from the current page.
-  // when you want to call an action without without caring about from where action belong to comonent belong to.
-  const fetcher = useFetcher();  
-  const {data, state} = fetcher;  
+  const fetcher = useFetcher();
+  const { data, state } = fetcher;
 
-  useEffect(()=> {  
+  useEffect(() => {
     if (state === 'idle' && data && data.message) {
-        window.alert(data.message);
+      window.alert(data.message);
     }
   }, [data, state]);
 
   return (
-    <fetcher.Form method="post" action="/newslatter" className={classes.newsletter}> 
+    <fetcher.Form
+      method="post"
+      action="/newsletter"
+      className={classes.newsletter}
+    >
       <input
         type="email"
         placeholder="Sign up for newsletter..."
