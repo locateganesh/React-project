@@ -1,43 +1,8 @@
-# React-project
-It contains multiple React Projects (learning projects)
+# React + Vite
 
-### 01 - React Essential
-A simple recat app for basic understaing
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-[Code](https://github.com/locateganesh/React-project/tree/01-React-Essentials)
+Currently, two official plugins are available:
 
-### 02 - React Investment App
-State management using `useState` 
-
-Code
-
-### 03 - Styling React App
-Style react using multiple methods:
-- [Styled component](https://styled-components.com/)
-- [CSS Modules](https://github.com/css-modules/css-modules)
-
-Code
-
-### 04 - Tic-Tac-Toe Recat App
-A game using React.
-
-Code
-
-
-### 05 - Countdown App 
-Using React Refs and Portals
-
-Code
-
-### 07 - E-Commerce 
-Using React Context API and `useRedeucer`
-
-Code
-
-### 08 - Location Picker 
-Using React `useffect` to manage side effect
-
-[Code](https://github.com/locateganesh/React-project/tree/08-location-picker-react-useEffect)
-
-
-> Credit - [Max schwarzmueller](https://github.com/academind).
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
