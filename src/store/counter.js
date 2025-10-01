@@ -8,7 +8,7 @@ const initialCounterState = {
 const counterSlide = createSlice({
     name: "counter", // Every slice needs a name, it can be any name.
     initialState: initialCounterState,
-    reducers: { // all the reducers this slide needs.
+    reducers: { // Reducer is required in every slice.
         increment(state) { // You don't need to write if checks here.
             state.counter++;
         }, 
