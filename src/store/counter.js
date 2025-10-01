@@ -9,7 +9,7 @@ const counterSlide = createSlice({
     name: "counter", // Every slice needs a name, it can be any name.
     initialState: initialCounterState,
     reducers: { // Reducer is required in every slice.
-        increment(state) { // You don't need to write if checks here.
+        increment(state) { // You can directly override state in redux toolkit. Because redux toolkit handles state overriding itself.
             state.counter++;
         }, 
         decrement(state) {
