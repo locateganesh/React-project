@@ -1,43 +1,21 @@
-# React-project
-It contains multiple React Projects (learning projects)
+## Reserved Filenames
 
-### 01 - React Essential
-A simple recat app for basic understaing
+As you already learned, there are some reserved filenames when working with NextJS.
 
-[Code](https://github.com/locateganesh/React-project/tree/01-React-Essentials)
+Important: These filenames are only reserved when creating them inside of the `app/` folder (or any subfolder). Outside of the `app/` folder, these filenames are not treated in any special way.
 
-### 02 - React Investment App
-State management using `useState` 
+Here's a list of reserved filenames in NextJS - you'll, of course, learn about the important ones throughout this section:
 
-Code
+`page.js` => Create a new page (e.g., `app/about/page.js` creates a `<your-domain>/about` page)
 
-### 03 - Styling React App
-Style react using multiple methods:
-- [Styled component](https://styled-components.com/)
-- [CSS Modules](https://github.com/css-modules/css-modules)
+`layout.js` => Create a new layout that wraps sibling and nested pages
 
-Code
+`not-found.js` => Fallback page for "Not Found" errors (thrown by sibling or nested pages or layouts)
 
-### 04 - Tic-Tac-Toe Recat App
-A game using React.
+`error.js` => Fallback page for other errors (thrown by sibling pages or nested pages or layouts)
 
-Code
+`loading.js` => Fallback page which is shown whilst sibling or nested pages (or layouts) are fetching data
 
+`route.js` => Allows you to create an API route (i.e., a page which does NOT return JSX code but instead data, e.g., in the JSON format)
 
-### 05 - Countdown App 
-Using React Refs and Portals
-
-Code
-
-### 07 - E-Commerce 
-Using React Context API and `useRedeucer`
-
-Code
-
-### 08 - Location Picker 
-Using React `useffect` to manage side effect
-
-[Code](https://github.com/locateganesh/React-project/tree/08-location-picker-react-useEffect)
-
-
-> Credit - [Max schwarzmueller](https://github.com/academind).
+You also find a list with all supported filenames & detailed explanations in the official docs: https://nextjs.org/docs/app/api-reference/file-conventions
