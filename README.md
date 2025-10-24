@@ -1,43 +1,46 @@
-# React-project
-It contains multiple React Projects (learning projects)
+# RSC feature
+    - React Server Components (RSC)
+    - Server Actions
+    - use() with promises
 
-### 01 - React Essential
-A simple recat app for basic understaing
+## Why is a special setup needed?
+    - Some feature requires a server-side environment.
+    - Code splits (by the build process / code bundler process)
+        - Client-side Code
+        - Non client-side Code
 
-[Code](https://github.com/locateganesh/React-project/tree/01-React-Essentials)
+## Combining RSC & Client Components
+    - RSC can directly include client-components in their JSX code.
+    - Client-components Can't directly include RSC in their code - only as children
 
-### 02 - React Investment App
-State management using `useState` 
+    `<SomeRSC />`                          
+    -----------------------------
+    |  <h2>I'm a RSC!</h2>      |   (works)
+    |  <SomeClientComponent />  |   
+    -----------------------------
 
-Code
+    `<SomeClientComponents />`
+    -------------------------------
+    |  <h2>I'm a Client Cmp!</h2> |  (Doesn't works)
+    |  <SomeRSC />                |  
+    -------------------------------
+    
+    `<SomeClientComponents>
+        <SomeRSC />
+    </SomeClientComponents>
+    `
+    -------------------------------
+    |  <h2>I'm a Client Cmp!</h2> |  (works)
+    |  {children}                 |  
+    -------------------------------
 
-### 03 - Styling React App
-Style react using multiple methods:
-- [Styled component](https://styled-components.com/)
-- [CSS Modules](https://github.com/css-modules/css-modules)
+## use() For Promises & Data Fetching
 
-Code
+    - The use() Hook can be used for gettin access to context
+    - But it can also be used to await promises - in client-components
+    - Works together with suspense to handle data fetching & loading fallbacks
 
-### 04 - Tic-Tac-Toe Recat App
-A game using React.
-
-Code
-
-
-### 05 - Countdown App 
-Using React Refs and Portals
-
-Code
-
-### 07 - E-Commerce 
-Using React Context API and `useRedeucer`
-
-Code
-
-### 08 - Location Picker 
-Using React `useffect` to manage side effect
-
-[Code](https://github.com/locateganesh/React-project/tree/08-location-picker-react-useEffect)
-
-
-> Credit - [Max schwarzmueller](https://github.com/academind).
+    - Important:
+        - use() for Promises required "special promises" 
+        - Created via libraries that integrate with React's Suspense feature
+        - Your promises, created in your components, can't be used!
